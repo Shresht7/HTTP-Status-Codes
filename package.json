@@ -1,5 +1,5 @@
 {
-  "name": "http-status-code",
+  "name": "http-status-codes",
   "version": "1.0.0",
   "description": "HTTP Status Codes!",
   "main": "index.js",
