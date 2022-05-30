@@ -1,0 +1,63 @@
+# ===========================================
+#                 GIST-MIRROR
+# -------------------------------------------
+# Mirror files from your repo to GitHub Gists
+# ===========================================
+
+name: Gist-Mirror
+
+# Activation Events
+# =================
+
+on:
+  push:
+    paths:
+      # Whenever a commit that affects the given files is pushed
+      - ./github/workflows/gist-mirror.yml
+
+  workflow_dispatch: # When a workflow event is dispatched manually
+    inputs:
+      dry-run:
+        description: Dry-Run Switch
+        default: "false"
+        required: false
+
+# Jobs
+# ====
+
+jobs:
+  Gist-Mirror:
+    runs-on: ubuntu-latest
+
+    name: Gist-Mirror
+    steps:
+      # Actions/Checkout
+      # ================
+
+      # Required for GITHUB_WORKSPACE
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Execute Gist-Mirror Action
+      # ==========================
+
+      - name: Gist-Mirror
+        uses: Shresht7/Gist-Mirror@v1
+        id: Gist-Mirror
+
+        # Config Parameters
+        # -----------------
+
+        with:
+          dry-run: ${{ github.event.inputs.dry-run == 'true' }}
+          gists: |
+            - id: 0e734cc393b0628ab98f381491fa6af7
+              description: "HTTP Status Codes - TypeScript Enumeration"
+              files:
+                - HTTPStatusCodes.ts
+
+        # Environment Variables
+        # ---------------------
+
+        env:
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }} # Personal-Access-Token with gist permissions.
