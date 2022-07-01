@@ -6,6 +6,12 @@ import {
     StatusText,
 } from '../src'
 
+/*
+ * The test-cases in some of these suites are not here to test the functionality of enums
+ * but instead test that these enums exist in the first place and are structured appropriately.
+ * In the event of refactors, these test-cases will ensure that everything conforms to the API design.
+*/
+
 describe('Status', () => {
 
     test.each([
