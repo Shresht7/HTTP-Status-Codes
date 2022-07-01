@@ -72,12 +72,8 @@ const defaultStatusTextFormatter = (str: string) => str
  */
 export const StatusText = (
     code: Code,
-    formatter: (str: string) => string = defaultStatusTextFormatter) => {
-    if (!isStatus(code)) {
-        throw new Error('Invalid Status Code')
-    }
-    return formatter(Code[code])
-}
+    formatter: (str: string) => string = defaultStatusTextFormatter
+): string => isStatus(code) ? formatter(Code[code]) : ''
 
 // -----------
 // TYPE GUARDS
