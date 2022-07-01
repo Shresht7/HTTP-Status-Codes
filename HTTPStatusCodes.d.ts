@@ -240,7 +240,7 @@ export declare enum SERVER_ERROR {
  *
  * @see {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
  */
-export declare const StatusCode: {
+export declare const CODE: {
     [x: number]: string;
     INTERNAL_SERVER_ERROR: SERVER_ERROR.INTERNAL_SERVER_ERROR;
     NOT_IMPLEMENTED: SERVER_ERROR.NOT_IMPLEMENTED;
@@ -306,7 +306,19 @@ export declare const StatusCode: {
     PROCESSING: INFORMATION.PROCESSING;
     EARLY_HINTS: INFORMATION.EARLY_HINTS;
 };
-export declare type StatusCode = INFORMATION | SUCCESS | REDIRECT | CLIENT_ERROR | SERVER_ERROR;
+export declare type CODE = INFORMATION | SUCCESS | REDIRECT | CLIENT_ERROR | SERVER_ERROR;
+/**
+ * -----------------
+ * HTTP Status Codes
+ * -----------------
+ *
+ * Hypertext Transfer Protocol (HTTP) response status codes are issued by
+ * a server in response to a client's request. The first digit specifies
+ * one of the five standard classes of response. The last two digits do not
+ * have any specific classifying role.
+ *
+ * @see {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
+ */
 export declare const Status: {
     INFORMATION: typeof INFORMATION;
     SUCCESS: typeof SUCCESS;
@@ -315,9 +327,10 @@ export declare const Status: {
     SERVER_ERROR: typeof SERVER_ERROR;
 };
 export declare type Status = typeof Status;
-export declare const StatusText: (code: StatusCode) => string;
+/** Pretty print status code text */
+export declare const StatusText: (code: CODE) => string;
 /** Returns a boolean indicating whether the given number is a valid status code */
-export declare const isStatus: (code: number) => code is StatusCode;
+export declare const isStatus: (code: number) => code is CODE;
 /** Type guard to determine if the status code is classified as INFORMATION */
 export declare const isInformation: (code: number) => code is INFORMATION;
 /** Type guard to determine if the status code is classified as SUCCESS */

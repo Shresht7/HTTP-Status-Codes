@@ -248,13 +248,25 @@ export var SERVER_ERROR;
  *
  * @see {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
  */
-export const StatusCode = {
+export const CODE = {
     ...INFORMATION,
     ...SUCCESS,
     ...REDIRECT,
     ...CLIENT_ERROR,
     ...SERVER_ERROR
 };
+/**
+ * -----------------
+ * HTTP Status Codes
+ * -----------------
+ *
+ * Hypertext Transfer Protocol (HTTP) response status codes are issued by
+ * a server in response to a client's request. The first digit specifies
+ * one of the five standard classes of response. The last two digits do not
+ * have any specific classifying role.
+ *
+ * @see {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
+ */
 export const Status = {
     INFORMATION,
     SUCCESS,
@@ -262,12 +274,16 @@ export const Status = {
     CLIENT_ERROR,
     SERVER_ERROR
 };
-export const StatusText = (code) => StatusCode[code].split(/_/g).map(word => word[0] + word.substring(1).toLowerCase()).join(' ');
+/** Pretty print status code text */
+export const StatusText = (code) => CODE[code]
+    .split(/_/g) //  Split on underscores
+    .map(word => word[0] + word.substring(1).toLowerCase()) //  Capitalize only the first letter of each word
+    .join(' '); //  Join words separated by a single space
 // -----------
 // TYPE GUARDS
 // -----------
 /** Returns a boolean indicating whether the given number is a valid status code */
-export const isStatus = (code) => code in StatusCode;
+export const isStatus = (code) => code in CODE;
 /** Type guard to determine if the status code is classified as INFORMATION */
 export const isInformation = (code) => code in INFORMATION;
 /** Type guard to determine if the status code is classified as SUCCESS */
