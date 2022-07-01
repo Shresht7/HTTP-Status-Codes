@@ -1,0 +1,36 @@
+name: Build Deno Project
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: node scripts/deno.js
+
+      # Add, Commit and Push Changes 🌎
+      # ===============================
+
+      # Check if there are any changes in the current-working-directory
+      - name: check for changes
+        id: git-diff
+        run: |
+          if git diff --exit-code; then
+          echo "::set-output name=changes_exist::false"
+          else
+          echo "::set-output name=changes_exist::true"
+          fi
+
+      # If there are, add, commit and push them
+      - name: push
+        if: ${{ steps.git-diff.outputs.changes_exist == 'true' }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m 'Build Deno Project 🦕'
+          git push
