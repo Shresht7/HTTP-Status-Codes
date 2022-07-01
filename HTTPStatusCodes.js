@@ -5,7 +5,7 @@
  * The request was received and understood, continuing process.
  * It alerts the client to wait for a final response.
  */
-var INFORMATION;
+export var INFORMATION;
 (function (INFORMATION) {
     /**
      * Server received request headers and client should proceed to send the request body (e.g. for POST requests)
@@ -29,7 +29,7 @@ var INFORMATION;
     INFORMATION[INFORMATION["EARLY_HINTS"] = 103] = "EARLY_HINTS";
 })(INFORMATION || (INFORMATION = {}));
 /** Request was received, understood, and accepted */
-var SUCCESS;
+export var SUCCESS;
 (function (SUCCESS) {
     /**
      * Standard response for successful HTTP requests.
@@ -80,7 +80,7 @@ var SUCCESS;
     SUCCESS[SUCCESS["IM_USED"] = 226] = "IM_USED";
 })(SUCCESS || (SUCCESS = {}));
 /** Additional action requested from client. Mainly URL Redirection */
-var REDIRECT;
+export var REDIRECT;
 (function (REDIRECT) {
     /**
      * Indicates multiple options for the resource from which the client may choose (via agent-driven content negotiation)
@@ -122,7 +122,7 @@ var REDIRECT;
     REDIRECT[REDIRECT["PERMANENT_REDIRECT"] = 308] = "PERMANENT_REDIRECT";
 })(REDIRECT || (REDIRECT = {}));
 /** Request cannot be fulfilled due to a client side error */
-var CLIENT_ERROR;
+export var CLIENT_ERROR;
 (function (CLIENT_ERROR) {
     /** The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size too large etc) */
     CLIENT_ERROR[CLIENT_ERROR["BAD_REQUEST"] = 400] = "BAD_REQUEST";
@@ -206,7 +206,7 @@ var CLIENT_ERROR;
     CLIENT_ERROR[CLIENT_ERROR["UNAVAILABLE_FOR_LEGAL_REASONS"] = 451] = "UNAVAILABLE_FOR_LEGAL_REASONS";
 })(CLIENT_ERROR || (CLIENT_ERROR = {}));
 /** Request cannot be fulfilled due to a server side error */
-var SERVER_ERROR;
+export var SERVER_ERROR;
 (function (SERVER_ERROR) {
     /** A generic error message, given when an unexpected condition was encountered and no more specific message is suitable */
     SERVER_ERROR[SERVER_ERROR["INTERNAL_SERVER_ERROR"] = 500] = "INTERNAL_SERVER_ERROR";
@@ -248,7 +248,14 @@ var SERVER_ERROR;
  *
  * @see {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
  */
-export default {
+export const StatusCode = {
+    ...INFORMATION,
+    ...SUCCESS,
+    ...REDIRECT,
+    ...CLIENT_ERROR,
+    ...SERVER_ERROR
+};
+export const Status = {
     INFORMATION,
     SUCCESS,
     REDIRECT,

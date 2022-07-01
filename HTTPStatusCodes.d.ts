@@ -2,7 +2,7 @@
  * The request was received and understood, continuing process.
  * It alerts the client to wait for a final response.
  */
-declare enum INFORMATION {
+export declare enum INFORMATION {
     /**
      * Server received request headers and client should proceed to send the request body (e.g. for POST requests)
      * To have a server check the request headers, a client must send `Expect: 100-continue` as a header in its initial request
@@ -25,7 +25,7 @@ declare enum INFORMATION {
     EARLY_HINTS = 103
 }
 /** Request was received, understood, and accepted */
-declare enum SUCCESS {
+export declare enum SUCCESS {
     /**
      * Standard response for successful HTTP requests.
      * The actual response depends on the actual method used.
@@ -75,7 +75,7 @@ declare enum SUCCESS {
     IM_USED = 226
 }
 /** Additional action requested from client. Mainly URL Redirection */
-declare enum REDIRECT {
+export declare enum REDIRECT {
     /**
      * Indicates multiple options for the resource from which the client may choose (via agent-driven content negotiation)
      * For example, this could be used to
@@ -116,7 +116,7 @@ declare enum REDIRECT {
     PERMANENT_REDIRECT = 308
 }
 /** Request cannot be fulfilled due to a client side error */
-declare enum CLIENT_ERROR {
+export declare enum CLIENT_ERROR {
     /** The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size too large etc) */
     BAD_REQUEST = 400,
     /**
@@ -199,7 +199,7 @@ declare enum CLIENT_ERROR {
     UNAVAILABLE_FOR_LEGAL_REASONS = 451
 }
 /** Request cannot be fulfilled due to a server side error */
-declare enum SERVER_ERROR {
+export declare enum SERVER_ERROR {
     /** A generic error message, given when an unexpected condition was encountered and no more specific message is suitable */
     INTERNAL_SERVER_ERROR = 500,
     /** This server either does not recognize the request method, or it lacks the ability to fulfill the request. */
@@ -228,13 +228,6 @@ declare enum SERVER_ERROR {
      */
     NETWORK_AUTHENTICATION_REQUIRED = 511
 }
-declare const _default: {
-    INFORMATION: typeof INFORMATION;
-    SUCCESS: typeof SUCCESS;
-    REDIRECT: typeof REDIRECT;
-    CLIENT_ERROR: typeof CLIENT_ERROR;
-    SERVER_ERROR: typeof SERVER_ERROR;
-};
 /**
  * -----------------
  * HTTP Status Codes
@@ -247,4 +240,77 @@ declare const _default: {
  *
  * @see {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
  */
-export default _default;
+export declare const StatusCode: {
+    [x: number]: string;
+    INTERNAL_SERVER_ERROR: SERVER_ERROR.INTERNAL_SERVER_ERROR;
+    NOT_IMPLEMENTED: SERVER_ERROR.NOT_IMPLEMENTED;
+    BAD_GATEWAY: SERVER_ERROR.BAD_GATEWAY;
+    SERVICE_UNAVAILABLE: SERVER_ERROR.SERVICE_UNAVAILABLE;
+    GATEWAY_TIMEOUT: SERVER_ERROR.GATEWAY_TIMEOUT;
+    HTTP_VERSION_NOT_SUPPORTED: SERVER_ERROR.HTTP_VERSION_NOT_SUPPORTED;
+    VARIANT_ALSO_NEGOTIATES: SERVER_ERROR.VARIANT_ALSO_NEGOTIATES;
+    INSUFFICIENT_STORAGE: SERVER_ERROR.INSUFFICIENT_STORAGE;
+    LOOP_DETECTED: SERVER_ERROR.LOOP_DETECTED;
+    NOT_EXTENDED: SERVER_ERROR.NOT_EXTENDED;
+    NETWORK_AUTHENTICATION_REQUIRED: SERVER_ERROR.NETWORK_AUTHENTICATION_REQUIRED;
+    BAD_REQUEST: CLIENT_ERROR.BAD_REQUEST;
+    UNAUTHORIZED: CLIENT_ERROR.UNAUTHORIZED;
+    PAYMENT_REQUIRED: CLIENT_ERROR.PAYMENT_REQUIRED;
+    FORBIDDEN: CLIENT_ERROR.FORBIDDEN;
+    NOT_FOUND: CLIENT_ERROR.NOT_FOUND;
+    METHOD_NOT_ALLOWED: CLIENT_ERROR.METHOD_NOT_ALLOWED;
+    NOT_ACCEPTABLE: CLIENT_ERROR.NOT_ACCEPTABLE;
+    PROXY_AUTHENTICATION_REQUIRED: CLIENT_ERROR.PROXY_AUTHENTICATION_REQUIRED;
+    REQUEST_TIMEOUT: CLIENT_ERROR.REQUEST_TIMEOUT;
+    CONFLICT: CLIENT_ERROR.CONFLICT;
+    GONE: CLIENT_ERROR.GONE;
+    LENGTH_REQUIRED: CLIENT_ERROR.LENGTH_REQUIRED;
+    PRECONDITION_FAILED: CLIENT_ERROR.PRECONDITION_FAILED;
+    PAYLOAD_TOO_LARGE: CLIENT_ERROR.PAYLOAD_TOO_LARGE;
+    URI_TOO_LONG: CLIENT_ERROR.URI_TOO_LONG;
+    UNSUPPORTED_MEDIA_TYPE: CLIENT_ERROR.UNSUPPORTED_MEDIA_TYPE;
+    RANGE_NOT_SATISFIABLE: CLIENT_ERROR.RANGE_NOT_SATISFIABLE;
+    EXPECTATION_FAILED: CLIENT_ERROR.EXPECTATION_FAILED;
+    IM_A_TEAPOT: CLIENT_ERROR.IM_A_TEAPOT;
+    MISDIRECTED_REQUEST: CLIENT_ERROR.MISDIRECTED_REQUEST;
+    UNPROCESSABLE_ENTITY: CLIENT_ERROR.UNPROCESSABLE_ENTITY;
+    LOCKED: CLIENT_ERROR.LOCKED;
+    FAILED_DEPENDENCY: CLIENT_ERROR.FAILED_DEPENDENCY;
+    TOO_EARLY: CLIENT_ERROR.TOO_EARLY;
+    UPGRADE_REQUIRED: CLIENT_ERROR.UPGRADE_REQUIRED;
+    PRECONDITION_REQUIRED: CLIENT_ERROR.PRECONDITION_REQUIRED;
+    TOO_MANY_REQUESTS: CLIENT_ERROR.TOO_MANY_REQUESTS;
+    REQUEST_HEADER_FIELDS_TOO_LARGE: CLIENT_ERROR.REQUEST_HEADER_FIELDS_TOO_LARGE;
+    UNAVAILABLE_FOR_LEGAL_REASONS: CLIENT_ERROR.UNAVAILABLE_FOR_LEGAL_REASONS;
+    MULTIPLE_CHOICES: REDIRECT.MULTIPLE_CHOICES;
+    MOVED_PERMANENTLY: REDIRECT.MOVED_PERMANENTLY;
+    FOUND: REDIRECT.FOUND;
+    SEE_OTHER: REDIRECT.SEE_OTHER;
+    NOT_MODIFIED: REDIRECT.NOT_MODIFIED;
+    USE_PROXY: REDIRECT.USE_PROXY;
+    SWITCH_PROXY: REDIRECT.SWITCH_PROXY;
+    TEMPORARY_REDIRECT: REDIRECT.TEMPORARY_REDIRECT;
+    PERMANENT_REDIRECT: REDIRECT.PERMANENT_REDIRECT;
+    OK: SUCCESS.OK;
+    CREATED: SUCCESS.CREATED;
+    ACCEPTED: SUCCESS.ACCEPTED;
+    NON_AUTHORITATIVE_INFORMATION: SUCCESS.NON_AUTHORITATIVE_INFORMATION;
+    NO_CONTENT: SUCCESS.NO_CONTENT;
+    RESET_CONTENT: SUCCESS.RESET_CONTENT;
+    PARTIAL_CONTENT: SUCCESS.PARTIAL_CONTENT;
+    MULTI_STATUS: SUCCESS.MULTI_STATUS;
+    ALREADY_REPORTED: SUCCESS.ALREADY_REPORTED;
+    IM_USED: SUCCESS.IM_USED;
+    CONTINUE: INFORMATION.CONTINUE;
+    SWITCHING_PROTOCOLS: INFORMATION.SWITCHING_PROTOCOLS;
+    PROCESSING: INFORMATION.PROCESSING;
+    EARLY_HINTS: INFORMATION.EARLY_HINTS;
+};
+export declare const Status: {
+    INFORMATION: typeof INFORMATION;
+    SUCCESS: typeof SUCCESS;
+    REDIRECT: typeof REDIRECT;
+    CLIENT_ERROR: typeof CLIENT_ERROR;
+    SERVER_ERROR: typeof SERVER_ERROR;
+};
+export declare type Status = typeof Status;

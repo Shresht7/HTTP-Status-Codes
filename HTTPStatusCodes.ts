@@ -6,7 +6,7 @@
  * The request was received and understood, continuing process.
  * It alerts the client to wait for a final response.
  */
-enum INFORMATION {
+export enum INFORMATION {
 
     /**
      * Server received request headers and client should proceed to send the request body (e.g. for POST requests)
@@ -34,7 +34,7 @@ enum INFORMATION {
 }
 
 /** Request was received, understood, and accepted */
-enum SUCCESS {
+export enum SUCCESS {
 
     /**
      * Standard response for successful HTTP requests.
@@ -95,7 +95,7 @@ enum SUCCESS {
 }
 
 /** Additional action requested from client. Mainly URL Redirection */
-enum REDIRECT {
+export enum REDIRECT {
 
     /**
      * Indicates multiple options for the resource from which the client may choose (via agent-driven content negotiation)
@@ -146,7 +146,7 @@ enum REDIRECT {
 }
 
 /** Request cannot be fulfilled due to a client side error */
-enum CLIENT_ERROR {
+export enum CLIENT_ERROR {
 
     /** The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size too large etc) */
     BAD_REQUEST = 400,
@@ -259,7 +259,7 @@ enum CLIENT_ERROR {
 }
 
 /** Request cannot be fulfilled due to a server side error */
-enum SERVER_ERROR {
+export enum SERVER_ERROR {
 
     /** A generic error message, given when an unexpected condition was encountered and no more specific message is suitable */
     INTERNAL_SERVER_ERROR = 500,
@@ -312,10 +312,20 @@ enum SERVER_ERROR {
  * 
  * @see {@link https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}
  */
-export default {
+export const StatusCode = {
+    ...INFORMATION,
+    ...SUCCESS,
+    ...REDIRECT,
+    ...CLIENT_ERROR,
+    ...SERVER_ERROR
+}
+
+export const Status = {
     INFORMATION,
     SUCCESS,
     REDIRECT,
     CLIENT_ERROR,
     SERVER_ERROR
 }
+
+export type Status = typeof Status
