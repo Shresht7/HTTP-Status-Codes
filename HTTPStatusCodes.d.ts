@@ -315,6 +315,7 @@ export declare const Status: {
     SERVER_ERROR: typeof SERVER_ERROR;
 };
 export declare type Status = typeof Status;
+export declare const StatusText: (code: StatusCode) => string;
 /** Returns a boolean indicating whether the given number is a valid status code */
 export declare const isStatus: (code: number) => code is StatusCode;
 /** Type guard to determine if the status code is classified as INFORMATION */

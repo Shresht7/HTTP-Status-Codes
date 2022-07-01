@@ -332,6 +332,12 @@ export const Status = {
 
 export type Status = typeof Status
 
+/** Pretty print status code text */
+export const StatusText = (code: StatusCode) => StatusCode[code]
+    .split(/_/g)    //  Split on underscores
+    .map(word => word[0] + word.substring(1).toLowerCase()) //  Capitalize only the first letter of each word
+    .join(' ')  //  Join words separated by a single space
+
 // -----------
 // TYPE GUARDS
 // -----------

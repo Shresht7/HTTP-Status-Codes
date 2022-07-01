@@ -262,6 +262,7 @@ export const Status = {
     CLIENT_ERROR,
     SERVER_ERROR
 };
+export const StatusText = (code) => StatusCode[code].split(/_/g).map(word => word[0] + word.substring(1).toLowerCase()).join(' ');
 // -----------
 // TYPE GUARDS
 // -----------
