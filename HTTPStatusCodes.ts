@@ -342,6 +342,8 @@ export const Status = {
     SERVER_ERROR
 }
 
+export default Status
+
 export type Status = typeof Status
 
 /** Pretty print status code text */
