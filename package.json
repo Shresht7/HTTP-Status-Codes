@@ -5,8 +5,9 @@
   "main": "lib/index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc -w",
+    "build:node": "tsc",
+    "build:deno": "node scripts/deno.js",
+    "build": "npm run build:node && npm run build:deno",
     "test": "vitest"
   },
   "author": "Shresht7",
