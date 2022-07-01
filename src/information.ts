@@ -27,4 +27,5 @@ export enum INFORMATION {
 
     /** Used to return some response headers before the final HTTP message */
     EARLY_HINTS = 103
+
 }

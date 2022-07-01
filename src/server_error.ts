@@ -38,4 +38,5 @@ export enum SERVER_ERROR {
      * before granting full internet access via a Wi-Fi hotspot.
      */
     NETWORK_AUTHENTICATION_REQUIRED = 511
+
 }

@@ -47,4 +47,5 @@ export enum REDIRECT {
 
     /** This and all future requests should be directed to the given URI */
     PERMANENT_REDIRECT = 308
+
 }

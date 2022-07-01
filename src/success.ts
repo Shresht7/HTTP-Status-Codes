@@ -57,4 +57,5 @@ export enum SUCCESS {
      * and the response is a representation of the result of one or more instance-manipulations applied to the current instance.
      */
     IM_USED = 226
+
 }
