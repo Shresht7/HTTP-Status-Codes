@@ -58,11 +58,26 @@ export type Status = typeof Status
 //  HELPERS
 //  =======
 
-/** Pretty print status code text */
-export const StatusText = (code: Code) => Code[code]
+/** Default status text formatter. NOT_FOUND --> Not Found */
+const defaultStatusTextFormatter = (str: string) => str
     .split(/_/g)    //  Split on underscores
     .map(word => word[0] + word.substring(1).toLowerCase()) //  Capitalize only the first letter of each word
     .join(' ')  //  Join words separated by a single space
+
+/**
+ * Pretty prints the status-text associated with the given code
+ * @param code Status Code
+ * @param formatter (Optional) Callback function to format the status-text. (default: NOT_FOUND --> Not Found)
+ * @returns Formatted status text
+ */
+export const StatusText = (
+    code: Code,
+    formatter: (str: string) => string = defaultStatusTextFormatter) => {
+    if (!isStatus(code)) {
+        throw new Error('Invalid Status Code')
+    }
+    return formatter(Code[code])
+}
 
 // -----------
 // TYPE GUARDS

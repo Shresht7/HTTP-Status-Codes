@@ -101,8 +101,8 @@ describe('Status Text', () => {
         [StatusText(Status.CLIENT_ERROR.NOT_FOUND), 'Not Found'],
         [StatusText(Code.INTERNAL_SERVER_ERROR), 'Internal Server Error'],
         [StatusText(502), 'Bad Gateway'],
+        [StatusText(404, (str) => `[${str}]: Nothing-Here`), '[NOT_FOUND]: Nothing-Here'],
         //  TODO: [StatusText(678), undefined],
-        //  TODO: [StatusText(404, customFormatter), 'Nothing-Here'],
     ])('%s === %v', (code, value) => {
         expect(code).toBe(value)
     })
