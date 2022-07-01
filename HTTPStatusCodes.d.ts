@@ -306,6 +306,7 @@ export declare const StatusCode: {
     PROCESSING: INFORMATION.PROCESSING;
     EARLY_HINTS: INFORMATION.EARLY_HINTS;
 };
+export declare type StatusCode = INFORMATION | SUCCESS | REDIRECT | CLIENT_ERROR | SERVER_ERROR;
 export declare const Status: {
     INFORMATION: typeof INFORMATION;
     SUCCESS: typeof SUCCESS;
@@ -314,3 +315,17 @@ export declare const Status: {
     SERVER_ERROR: typeof SERVER_ERROR;
 };
 export declare type Status = typeof Status;
+/** Returns a boolean indicating whether the given number is a valid status code */
+export declare const isStatus: (code: number) => code is StatusCode;
+/** Type guard to determine if the status code is classified as INFORMATION */
+export declare const isInformation: (code: number) => code is INFORMATION;
+/** Type guard to determine if the status code is classified as SUCCESS */
+export declare const isSuccess: (code: number) => code is SUCCESS;
+/** Type guard to determine if the status code is classified as REDIRECT */
+export declare const isRedirect: (code: number) => code is REDIRECT;
+/** Type guard to determine if the status code is classified as CLIENT_ERROR */
+export declare const isClientError: (code: number) => code is CLIENT_ERROR;
+/** Type guard to determine if the status code is classified as SERVER_ERROR */
+export declare const isServerError: (code: number) => code is SERVER_ERROR;
+/** Returns a boolean indicating whether the given number is an error status code */
+export declare const isError: (code: number) => boolean;

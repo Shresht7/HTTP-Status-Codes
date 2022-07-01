@@ -262,3 +262,20 @@ export const Status = {
     CLIENT_ERROR,
     SERVER_ERROR
 };
+// -----------
+// TYPE GUARDS
+// -----------
+/** Returns a boolean indicating whether the given number is a valid status code */
+export const isStatus = (code) => code in StatusCode;
+/** Type guard to determine if the status code is classified as INFORMATION */
+export const isInformation = (code) => code in INFORMATION;
+/** Type guard to determine if the status code is classified as SUCCESS */
+export const isSuccess = (code) => code in SUCCESS;
+/** Type guard to determine if the status code is classified as REDIRECT */
+export const isRedirect = (code) => code in REDIRECT;
+/** Type guard to determine if the status code is classified as CLIENT_ERROR */
+export const isClientError = (code) => code in CLIENT_ERROR;
+/** Type guard to determine if the status code is classified as SERVER_ERROR */
+export const isServerError = (code) => code in SERVER_ERROR;
+/** Returns a boolean indicating whether the given number is an error status code */
+export const isError = (code) => isClientError(code) || isServerError(code);
