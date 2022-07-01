@@ -2,14 +2,17 @@
   "name": "http-status-codes",
   "version": "1.0.0",
   "description": "HTTP Status Codes!",
-  "main": "dist/HTTPStatusCodes.js",
+  "main": "lib/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "tsc -w",
+    "test": "vitest"
   },
   "author": "Shresht7",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.2",
+    "vitest": "^0.16.0"
   }
 }
