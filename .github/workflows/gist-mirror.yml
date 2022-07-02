@@ -11,9 +11,10 @@ name: Gist-Mirror
 
 on:
   push:
+    branches: ["main"]
     paths:
       # Whenever a commit that affects the given files is pushed
-      - ./github/workflows/gist-mirror.yml
+      - ./deno/mod.ts
 
   workflow_dispatch: # When a workflow event is dispatched manually
     inputs:
@@ -52,9 +53,9 @@ jobs:
           dry-run: ${{ github.event.inputs.dry-run == 'true' }}
           gists: |
             - id: 0e734cc393b0628ab98f381491fa6af7
-              description: "HTTP Status Codes - TypeScript Enumeration"
+              description: "HTTP Status Codes - TypeScript"
               files:
-                - HTTPStatusCodes.ts
+                - deno/mod.ts
 
         # Environment Variables
         # ---------------------
