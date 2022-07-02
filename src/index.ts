@@ -1,11 +1,9 @@
-//  Library
 import { INFORMATION } from './information'
 import { SUCCESS } from './success'
 import { REDIRECT } from './redirect'
 import { CLIENT_ERROR } from './client_error'
 import { SERVER_ERROR } from './server_error'
 
-//  Re-exports
 export { INFORMATION, SUCCESS, REDIRECT, CLIENT_ERROR, SERVER_ERROR }
 
 /**
