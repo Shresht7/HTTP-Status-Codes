@@ -37,13 +37,13 @@ Code[200]                      //  OK
 
 ### `Status`
 
-| Status Type           | Series |
-| --------------------- | ------ |
-| `Status.INFORMATION`  | `1xx`  |
-| `Status.SUCCESS`      | `2xx`  |
-| `Status.REDIRECT`     | `3xx`  |
-| `Status.CLIENT_ERROR` | `4xx`  |
-| `Status.SERVER_ERROR` | `5xx`  |
+| Status Type           | Series | Description                                                     |
+| --------------------- | ------ | --------------------------------------------------------------- |
+| `Status.INFORMATION`  | `1xx`  | The request was received and understood, continuing process     |
+| `Status.SUCCESS`      | `2xx`  | Request was received, understood, and accepted                  |
+| `Status.REDIRECT`     | `3xx`  | Additional action requested from client. Mainly URL Redirection |
+| `Status.CLIENT_ERROR` | `4xx`  | Request cannot be fulfilled due to a client side error          |
+| `Status.SERVER_ERROR` | `5xx`  | Request cannot be fulfilled due to a server side error          |
 
 ```ts
 Status.INFORMATION.PROCESSING   //  102
@@ -85,11 +85,12 @@ StatusText(Status.CLIENT_ERROR.NOT_FOUND, (text: string) => {
 
 ```ts
 import {
-    Status,
     Code,
+    Status,
     isStatus,
     isInformation,
     isSuccess,
+    isRedirect,
     isClientError,
     isServerError
 } from 'http-status-code'
@@ -104,6 +105,8 @@ isInformation(Code.INTERNAL_SERVER_ERROR)               //  false
 
 isSuccess(200)                                          //  true
 isSuccess(Code.NOT_FOUND)                               //  false
+
+isRedirect(301)                                         //  true
 
 isClientError(404)                                      //  true
 isServerError(404)                                      //  false
