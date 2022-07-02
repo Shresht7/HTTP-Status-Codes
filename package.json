@@ -8,6 +8,8 @@
     "build:node": "tsc",
     "build:deno": "node scripts/deno.js",
     "build": "npm run build:node && npm run build:deno",
+    "clean": "npx rimraf lib",
+    "rebuild": "npm run clean && npm run build",
     "test": "vitest"
   },
   "author": "Shresht7",
