@@ -20,7 +20,7 @@ jobs:
           deno-version: v2.x
       - run: deno test
       - run: deno publish --dry-run
-      - run: deno pack
+      - run: deno task pack
       - run: npm publish ./shresht7-http-status-codes-*.tgz --dry-run
 
   publish:
@@ -39,5 +39,5 @@ jobs:
         with:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
-      - run: deno pack
+      - run: deno task pack
       - run: npm publish ./shresht7-http-status-codes-*.tgz
