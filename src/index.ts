@@ -70,7 +70,7 @@ const defaultStatusTextFormatter = (str: string) => str
  * @returns Formatted status text
  */
 export const StatusText = (
-    code: Code,
+    code: number,
     formatter: (str: string) => string = defaultStatusTextFormatter
 ): string => isStatus(code) ? formatter(Code[code]) : ''
 
