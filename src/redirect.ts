@@ -36,6 +36,7 @@ export enum REDIRECT {
 
     /**
      * No longer used. Originally meant - Subsequent requests should used the specified proxy
+     * @deprecated
      */
     SWITCH_PROXY = 306,
 
