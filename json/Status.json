@@ -1,138 +1,264 @@
 {
   "INFORMATION": {
-    "100": "CONTINUE",
-    "101": "SWITCHING_PROTOCOLS",
-    "102": "PROCESSING",
-    "103": "EARLY_HINTS",
-    "CONTINUE": 100,
-    "SWITCHING_PROTOCOLS": 101,
-    "PROCESSING": 102,
-    "EARLY_HINTS": 103
+    "100": {
+      "name": "CONTINUE",
+      "description": "Server received request headers and client should proceed to send the request body (e.g. for POST requests) To have a server check the request headers, a client must send `Expect: 100-continue` as a header in its initial request and receive a `100-Continue` status code in the response from the server before sending the body. If the client receives an error code such as `403 Forbidden` or `405 Method Not Allowed` then it should not send the body. The response `417 Expectation Failed` indicates that the request should be repeated without the `Expect` header."
+    },
+    "101": {
+      "name": "SWITCHING_PROTOCOLS",
+      "description": "The client has asked the server to switch protocols and the server has agreed to do so"
+    },
+    "102": {
+      "name": "PROCESSING",
+      "description": "A WebDAV request may contain many sub-requests that may take a long time to complete. This status code indicates that the server has received and is processing the request, but no response is available yet. This prevents the client from timing out assuming the request was lost."
+    },
+    "103": {
+      "name": "EARLY_HINTS",
+      "description": "Used to return some response headers before the final HTTP message"
+    }
   },
   "SUCCESS": {
-    "200": "OK",
-    "201": "CREATED",
-    "202": "ACCEPTED",
-    "203": "NON_AUTHORITATIVE_INFORMATION",
-    "204": "NO_CONTENT",
-    "205": "RESET_CONTENT",
-    "206": "PARTIAL_CONTENT",
-    "207": "MULTI_STATUS",
-    "208": "ALREADY_REPORTED",
-    "226": "IM_USED",
-    "OK": 200,
-    "CREATED": 201,
-    "ACCEPTED": 202,
-    "NON_AUTHORITATIVE_INFORMATION": 203,
-    "NO_CONTENT": 204,
-    "RESET_CONTENT": 205,
-    "PARTIAL_CONTENT": 206,
-    "MULTI_STATUS": 207,
-    "ALREADY_REPORTED": 208,
-    "IM_USED": 226
+    "200": {
+      "name": "OK",
+      "description": "Standard response for successful HTTP requests. The actual response depends on the actual method used. For GET requests, the response will contain an entity corresponding to the requested resource. For POST requests, the response will contain an entity describing or containing the result of the action."
+    },
+    "201": {
+      "name": "CREATED",
+      "description": "The request has been accepted, and a new resource has been created"
+    },
+    "202": {
+      "name": "ACCEPTED",
+      "description": "The request has been accepted, but the processing has not been completed. The request may or may not be eventually acted upon and may be disallowed when processing."
+    },
+    "203": {
+      "name": "NON_AUTHORITATIVE_INFORMATION",
+      "description": "The server is a transforming proxy (e.g. a Web Accelerator) that received a `200 OK` from its origin, but is returning a modified version of its response."
+    },
+    "204": {
+      "name": "NO_CONTENT",
+      "description": "The server processed the request successfully and is not returning any content"
+    },
+    "205": {
+      "name": "RESET_CONTENT",
+      "description": "The server successfully processed the request, asks that the client reset its document view, and is not returning any content"
+    },
+    "206": {
+      "name": "PARTIAL_CONTENT",
+      "description": "The server is delivering only part of the content due to a range header set by the client. The range header is used by HTTP clients to enable resuming of interrupted downloads, or split a download into multiple simultaneous streams."
+    },
+    "207": {
+      "name": "MULTI_STATUS",
+      "description": "The message body that follows is by default an XML message and can contain a number of separate response codes, depending on the number of sub-requests"
+    },
+    "208": {
+      "name": "ALREADY_REPORTED",
+      "description": "The members of a DAV binding have already been enumerated in a preceding part of the (multi-status) response, and are not being included again"
+    },
+    "226": {
+      "name": "IM_USED",
+      "description": "The server has fulfilled a request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance."
+    }
   },
   "REDIRECT": {
-    "300": "MULTIPLE_CHOICES",
-    "301": "MOVED_PERMANENTLY",
-    "302": "FOUND",
-    "303": "SEE_OTHER",
-    "304": "NOT_MODIFIED",
-    "305": "USE_PROXY",
-    "306": "SWITCH_PROXY",
-    "307": "TEMPORARY_REDIRECT",
-    "308": "PERMANENT_REDIRECT",
-    "MULTIPLE_CHOICES": 300,
-    "MOVED_PERMANENTLY": 301,
-    "FOUND": 302,
-    "SEE_OTHER": 303,
-    "NOT_MODIFIED": 304,
-    "USE_PROXY": 305,
-    "SWITCH_PROXY": 306,
-    "TEMPORARY_REDIRECT": 307,
-    "PERMANENT_REDIRECT": 308
+    "300": {
+      "name": "MULTIPLE_CHOICES",
+      "description": "Indicates multiple options for the resource from which the client may choose (via agent-driven content negotiation) For example, this could be used to - present multiple video formats options. - list files with different filename extensions."
+    },
+    "301": {
+      "name": "MOVED_PERMANENTLY",
+      "description": "This and all future request should be redirected to the given URL"
+    },
+    "302": {
+      "name": "FOUND",
+      "description": "Tells the client to look at another URL."
+    },
+    "303": {
+      "name": "SEE_OTHER",
+      "description": "The response to this request can be found under another URL using the GET method. When receiving in response to a POST/PUT/DELETE request, the client should presume the server has received the data and should issue a GET request to the given URL"
+    },
+    "304": {
+      "name": "NOT_MODIFIED",
+      "description": "Indicates that the resource has not been modified since the version specified by the request headers `if-Modified-Since` or `if-None-Match`. In such a case, there is no need to retransmit the resource since the client still has a previously-downloaded copy."
+    },
+    "305": {
+      "name": "USE_PROXY",
+      "description": "The requested resource is only available through a proxy, the address for which is provided in the response. NOTE: for security reasons, many HTTP clients (like Mozilla Firefox and Internet Explorer) do not obey this status code"
+    },
+    "306": {
+      "name": "SWITCH_PROXY",
+      "description": "No longer used. Originally meant - Subsequent requests should used the specified proxy"
+    },
+    "307": {
+      "name": "TEMPORARY_REDIRECT",
+      "description": "In this case, the request should be repeated with another URI. However, future requests should still use this URI."
+    },
+    "308": {
+      "name": "PERMANENT_REDIRECT",
+      "description": "This and all future requests should be directed to the given URI"
+    }
   },
   "CLIENT_ERROR": {
-    "400": "BAD_REQUEST",
-    "401": "UNAUTHORIZED",
-    "402": "PAYMENT_REQUIRED",
-    "403": "FORBIDDEN",
-    "404": "NOT_FOUND",
-    "405": "METHOD_NOT_ALLOWED",
-    "406": "NOT_ACCEPTABLE",
-    "407": "PROXY_AUTHENTICATION_REQUIRED",
-    "408": "REQUEST_TIMEOUT",
-    "409": "CONFLICT",
-    "410": "GONE",
-    "411": "LENGTH_REQUIRED",
-    "412": "PRECONDITION_FAILED",
-    "413": "PAYLOAD_TOO_LARGE",
-    "414": "URI_TOO_LONG",
-    "415": "UNSUPPORTED_MEDIA_TYPE",
-    "416": "RANGE_NOT_SATISFIABLE",
-    "417": "EXPECTATION_FAILED",
-    "418": "IM_A_TEAPOT",
-    "421": "MISDIRECTED_REQUEST",
-    "422": "UNPROCESSABLE_ENTITY",
-    "423": "LOCKED",
-    "424": "FAILED_DEPENDENCY",
-    "425": "TOO_EARLY",
-    "426": "UPGRADE_REQUIRED",
-    "428": "PRECONDITION_REQUIRED",
-    "429": "TOO_MANY_REQUESTS",
-    "431": "REQUEST_HEADER_FIELDS_TOO_LARGE",
-    "451": "UNAVAILABLE_FOR_LEGAL_REASONS",
-    "BAD_REQUEST": 400,
-    "UNAUTHORIZED": 401,
-    "PAYMENT_REQUIRED": 402,
-    "FORBIDDEN": 403,
-    "NOT_FOUND": 404,
-    "METHOD_NOT_ALLOWED": 405,
-    "NOT_ACCEPTABLE": 406,
-    "PROXY_AUTHENTICATION_REQUIRED": 407,
-    "REQUEST_TIMEOUT": 408,
-    "CONFLICT": 409,
-    "GONE": 410,
-    "LENGTH_REQUIRED": 411,
-    "PRECONDITION_FAILED": 412,
-    "PAYLOAD_TOO_LARGE": 413,
-    "URI_TOO_LONG": 414,
-    "UNSUPPORTED_MEDIA_TYPE": 415,
-    "RANGE_NOT_SATISFIABLE": 416,
-    "EXPECTATION_FAILED": 417,
-    "IM_A_TEAPOT": 418,
-    "MISDIRECTED_REQUEST": 421,
-    "UNPROCESSABLE_ENTITY": 422,
-    "LOCKED": 423,
-    "FAILED_DEPENDENCY": 424,
-    "TOO_EARLY": 425,
-    "UPGRADE_REQUIRED": 426,
-    "PRECONDITION_REQUIRED": 428,
-    "TOO_MANY_REQUESTS": 429,
-    "REQUEST_HEADER_FIELDS_TOO_LARGE": 431,
-    "UNAVAILABLE_FOR_LEGAL_REASONS": 451
+    "400": {
+      "name": "BAD_REQUEST",
+      "description": "The server cannot or will not process the request due to an apparent client error (e.g. malformed request syntax, size too large etc)"
+    },
+    "401": {
+      "name": "UNAUTHORIZED",
+      "description": "Similar to `403 Forbidden`, but specifically for use when authentication is required and has failed or has not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource. `401` semantically means **Unauthorized**, the user does not have valid authentication credentials for the target resource."
+    },
+    "402": {
+      "name": "PAYMENT_REQUIRED",
+      "description": "Not widely used, reserved for future use. The original intention was that this code might be used as part of some form of digital cash or micro-payment scheme. But that has not yet happened."
+    },
+    "403": {
+      "name": "FORBIDDEN",
+      "description": "The request contained valid data and was understood by the server, but the server is refusing action. This may be due to user not having the necessary permissions for a resource or needing an account of some sort, or attempting a prohibited action (e.g. creating a duplicate record where only one is allowed)"
+    },
+    "404": {
+      "name": "NOT_FOUND",
+      "description": "404 - Not Found"
+    },
+    "405": {
+      "name": "METHOD_NOT_ALLOWED",
+      "description": "A request method is not supported for the requested resource. e.g. using a GET request to post form-data that requires a POST request"
+    },
+    "406": {
+      "name": "NOT_ACCEPTABLE",
+      "description": "The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request"
+    },
+    "407": {
+      "name": "PROXY_AUTHENTICATION_REQUIRED",
+      "description": "Client must first authenticate itself with the proxy"
+    },
+    "408": {
+      "name": "REQUEST_TIMEOUT",
+      "description": "The server timed out waiting for the request"
+    },
+    "409": {
+      "name": "CONFLICT",
+      "description": "Indicates that the request could not be processed because of a conflict. e.g. edit conflict between multiple simultaneous updates"
+    },
+    "410": {
+      "name": "GONE",
+      "description": "Indicates that request is no longer available and will never be available again This should be used when a resource has been intentionally removed and the resource should be purged. Upon receiving a `410` request, the client should not request this resource again. Clients such as search engines should remove the resource from their indices. Most general use cases do not require a `410` a `404` is enough."
+    },
+    "411": {
+      "name": "LENGTH_REQUIRED",
+      "description": "The request did not specify the length of its content, which is required by the requested resource"
+    },
+    "412": {
+      "name": "PRECONDITION_FAILED",
+      "description": "The server did not meet one of the preconditions that the requester put on the request header fields"
+    },
+    "413": {
+      "name": "PAYLOAD_TOO_LARGE",
+      "description": "The request is larger than the server is willing or able to process"
+    },
+    "414": {
+      "name": "URI_TOO_LONG",
+      "description": "The URI provided was too long for the server to process. Often the result of too much data being encoded in a query-string"
+    },
+    "415": {
+      "name": "UNSUPPORTED_MEDIA_TYPE",
+      "description": "The request entity has a media type that the server does not support"
+    },
+    "416": {
+      "name": "RANGE_NOT_SATISFIABLE",
+      "description": "The client has asked for a portion of the file, but server cannot supply that portion"
+    },
+    "417": {
+      "name": "EXPECTATION_FAILED",
+      "description": "The server cannot meet the requirements of the `Expect` request-header field"
+    },
+    "418": {
+      "name": "IM_A_TEAPOT",
+      "description": "This code was an April Fools' joke. Not expected to be implemented by any HTTP server. The RFC specifies this code should be returned by teapots requested to brew coffee."
+    },
+    "421": {
+      "name": "MISDIRECTED_REQUEST",
+      "description": "The request was directed at a server that is not able to produce a response"
+    },
+    "422": {
+      "name": "UNPROCESSABLE_ENTITY",
+      "description": "The request was well-formed but was unable to be followed doe to semantic errors"
+    },
+    "423": {
+      "name": "LOCKED",
+      "description": "The resource that is being accessed is locked"
+    },
+    "424": {
+      "name": "FAILED_DEPENDENCY",
+      "description": "The request failed because it depends on another request that failed"
+    },
+    "425": {
+      "name": "TOO_EARLY",
+      "description": "Indicates that the server is unwilling to risk processing a request that might be replayed"
+    },
+    "426": {
+      "name": "UPGRADE_REQUIRED",
+      "description": "The client should switch to a different protocol such as TLS/1.3 given in the header field"
+    },
+    "428": {
+      "name": "PRECONDITION_REQUIRED",
+      "description": "The origin server requires the request to be conditional"
+    },
+    "429": {
+      "name": "TOO_MANY_REQUESTS",
+      "description": "The user has sent too many requests in a given amount of time. Intended for use with rate limiting schemes"
+    },
+    "431": {
+      "name": "REQUEST_HEADER_FIELDS_TOO_LARGE",
+      "description": "The server is unwilling to process the request because headers are too large"
+    },
+    "451": {
+      "name": "UNAVAILABLE_FOR_LEGAL_REASONS",
+      "description": "A server operator has received a legal demand to deny access to a resource or to a set of resources that includes the requested resource"
+    }
   },
   "SERVER_ERROR": {
-    "500": "INTERNAL_SERVER_ERROR",
-    "501": "NOT_IMPLEMENTED",
-    "502": "BAD_GATEWAY",
-    "503": "SERVICE_UNAVAILABLE",
-    "504": "GATEWAY_TIMEOUT",
-    "505": "HTTP_VERSION_NOT_SUPPORTED",
-    "506": "VARIANT_ALSO_NEGOTIATES",
-    "507": "INSUFFICIENT_STORAGE",
-    "508": "LOOP_DETECTED",
-    "510": "NOT_EXTENDED",
-    "511": "NETWORK_AUTHENTICATION_REQUIRED",
-    "INTERNAL_SERVER_ERROR": 500,
-    "NOT_IMPLEMENTED": 501,
-    "BAD_GATEWAY": 502,
-    "SERVICE_UNAVAILABLE": 503,
-    "GATEWAY_TIMEOUT": 504,
-    "HTTP_VERSION_NOT_SUPPORTED": 505,
-    "VARIANT_ALSO_NEGOTIATES": 506,
-    "INSUFFICIENT_STORAGE": 507,
-    "LOOP_DETECTED": 508,
-    "NOT_EXTENDED": 510,
-    "NETWORK_AUTHENTICATION_REQUIRED": 511
+    "500": {
+      "name": "INTERNAL_SERVER_ERROR",
+      "description": "A generic error message, given when an unexpected condition was encountered and no more specific message is suitable"
+    },
+    "501": {
+      "name": "NOT_IMPLEMENTED",
+      "description": "This server either does not recognize the request method, or it lacks the ability to fulfill the request."
+    },
+    "502": {
+      "name": "BAD_GATEWAY",
+      "description": "The server was acting as a gateway or proxy and received an invalid response from the upstream server."
+    },
+    "503": {
+      "name": "SERVICE_UNAVAILABLE",
+      "description": "The server cannot handle the request (because it is overloaded or down for maintenance). Generally this is a temporary state."
+    },
+    "504": {
+      "name": "GATEWAY_TIMEOUT",
+      "description": "The server was acting as a gateway or a proxy and dit not receive a timely response from the upstream server"
+    },
+    "505": {
+      "name": "HTTP_VERSION_NOT_SUPPORTED",
+      "description": "The server does not support the HTTP protocol version used in the request"
+    },
+    "506": {
+      "name": "VARIANT_ALSO_NEGOTIATES",
+      "description": "Transparent content negotiation for the request results in a circular reference"
+    },
+    "507": {
+      "name": "INSUFFICIENT_STORAGE",
+      "description": "The server is unable to store the representation needed to complete the request"
+    },
+    "508": {
+      "name": "LOOP_DETECTED",
+      "description": "The server detected an infinite loop while processing the request (sent instead of `208 Already reported`)"
+    },
+    "510": {
+      "name": "NOT_EXTENDED",
+      "description": "Further extensions to the request are required for the server to fulfill it"
+    },
+    "511": {
+      "name": "NETWORK_AUTHENTICATION_REQUIRED",
+      "description": "The client needs to authenticate to gain network access Intended for use by intercepting proxies used to control access to the network (e.g. captive portals) used to require agreement to Terms of Service before granting full internet access via a Wi-Fi hotspot."
+    }
   }
 }
