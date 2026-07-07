@@ -110,10 +110,27 @@ isError(404)                                            //  true
 
 ---
 
+### JSON
+
+The [`json/`](./json/) directory contains the same status codes in plain JSON, useful for non-TypeScript consumers.
+
+- **`Status.json`**: Categorized by series (`INFORMATION`, `SUCCESS`, `REDIRECT`, `CLIENT_ERROR`, `SERVER_ERROR`)
+- **`StatusCodes.json`**: Flat map of all codes
+
+```json
+{
+  "100": { "name": "CONTINUE", "description": "Server received request headers…" },
+  "200": { "name": "OK", "description": "Standard response for successful HTTP requests…" }
+}
+```
+
+These are generated from the source JSDoc via [`scripts/generate-json.ps1`](./scripts/generate-json.ps1).
+
+---
+
 ## 📕 References
 
 - [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes): Wikipedia article with a comprehensive list of HTTP status codes and their descriptions
-- [JSON exports](./json/): Status codes and descriptions in plain JSON, one per category and one flat map
 
 ---
 
