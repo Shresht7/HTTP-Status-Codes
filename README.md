@@ -1,5 +1,7 @@
 <h1> HTTP Status Codes</h1>
 
+A lightweight TypeScript library providing HTTP status code enums with descriptions, reverse lookups, and type guards.
+
 ## 📦 Install
 
 ### Deno (JSR)
@@ -108,6 +110,13 @@ isError(404)                                            //  true
 
 ---
 
-## 📑License
+## 📕 References
+
+- [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes): Wikipedia article with a comprehensive list of HTTP status codes and their descriptions
+- [JSON exports](./json/): Status codes and descriptions in plain JSON, one per category and one flat map
+
+---
+
+## 📑 License
 
 > [MIT License](./LICENSE)
