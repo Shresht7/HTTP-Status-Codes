@@ -84,7 +84,8 @@ import {
     isSuccess,
     isRedirect,
     isClientError,
-    isServerError
+    isServerError,
+    isError
 } from 'jsr:@shresht7/http-status-codes'
 
 isStatus(Status.REDIRECT.MOVED_PERMANENTLY)             //  true
