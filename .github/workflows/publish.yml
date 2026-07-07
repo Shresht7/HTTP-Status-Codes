@@ -1,0 +1,41 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - run: deno test
+      - run: deno publish --dry-run
+
+  # publish:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v7
+  #     - uses: denoland/setup-deno@v2
+  #       with:
+  #         deno-version: v2.x
+
+  #     # Publish to JSR
+  #     - run: deno publish
+
+  #     # Publish to npm
+  #     - uses: actions/setup-node@v6.4.0
+  #       with:
+  #         node-version: "22"
+  #         registry-url: "https://registry.npmjs.org"
+  #     - run: deno pack
+  #     - run: npm publish ./shresht7-http-status-codes-*.tgz
