@@ -20,6 +20,7 @@ jobs:
           deno-version: v2.x
       - run: deno test
       - run: deno publish --dry-run
+      - run: deno pack
       - run: npm publish ./shresht7-http-status-codes-*.tgz --dry-run
 
   publish:
