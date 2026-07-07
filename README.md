@@ -1,31 +1,23 @@
 <h1> HTTP Status Codes</h1>
 
-<h3>🚧 Work in Progress 🚧</h3>
+## 📦 Install
 
-<!-- 
-## 📦 Import
-
-### Node
+### Deno (JSR)
 
 ```sh
-TODO: npm install <package-name>
+deno add jsr:@shresht7/http-status-codes
 ```
 
-```ts
-import { Status, Code } from 'http-status-codes'
-```
+### npm (Node)
 
-### Deno
-
-```ts
-import { Status, Code } from 'https://.../HTTP-Status-Codes/deno/mod.ts'
+```sh
+npm install @shresht7/http-status-codes
 ```
--->
 
 ## 📖 Usage
 
 ```ts
-import { Status, Code } from 'http-status-code'
+import { Status, Code } from 'jsr:@shresht7/http-status-codes'
 
 Status.INFORMATION.PROCESSING  //  102
 Status.SUCCESS.OK              //  200
@@ -63,7 +55,7 @@ Code[301]                       //  MOVED_PERMANENTLY
 ### `StatusText`
 
 ```ts
-import { Status, Code, StatusText } from 'http-status-code'
+import { Status, Code, StatusText } from 'jsr:@shresht7/http-status-codes'
 
 StatusText(Code.CONTINUE)                           //  Continue
 StatusText(Status.INFORMATION.SWITCHING_PROTOCOLS)  //  Switching Protocols
@@ -93,7 +85,7 @@ import {
     isRedirect,
     isClientError,
     isServerError
-} from 'http-status-code'
+} from 'jsr:@shresht7/http-status-codes'
 
 isStatus(Status.REDIRECT.MOVED_PERMANENTLY)             //  true
 isStatus(Code.BAD_REQUEST)                              //  true
