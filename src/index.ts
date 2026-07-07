@@ -97,4 +97,4 @@ export const isClientError = (code: number): code is CLIENT_ERROR => code in CLI
 export const isServerError = (code: number): code is SERVER_ERROR => code in SERVER_ERROR
 
 /** Returns a boolean indicating whether the given number is an error status code */
-export const isError = (code: number): boolean => isClientError(code) || isServerError(code)
+export const isError = (code: number): code is CLIENT_ERROR | SERVER_ERROR => isClientError(code) || isServerError(code)
